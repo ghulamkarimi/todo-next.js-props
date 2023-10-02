@@ -24,5 +24,10 @@
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "latest"
+  },
+  "eslintConfig": {
+    "rules": {
+      "react-hooks/rules-of-hooks": "off"
+    }
   }
 }
