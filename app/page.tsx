@@ -1,10 +1,11 @@
 "use client";
-import Item from '@/components/Item'
+
 import TopForm from '@/components/TopForm'
 import { IItem } from '@/interface';
 import React, { useState } from 'react'
 
 const page = () => {
+
 
   const [items, setItems] = useState<IItem[]>([])
   const [filter, setFilter] = useState<string>("")
