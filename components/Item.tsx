@@ -35,7 +35,7 @@ const Item = ({ items, setItems, filter, setFilter }: IItemProps) => {
         <ul className='bg-slate-600 flex rounded-xl flex-col  justify-center items-center mt-8 px-2'>
             {
                 items.map((item) => (
-                    <li className='flex px-4  gap-48 bg-white my-2 py-2 border-b last:border-b-0 rounded-lg w-fit '
+                    <li className={`flex flex-wrap  px-1 w-full  bg-white my-2 py-2 rounded-lg justify-between items-center ${item.done ? "border-l-4 border-r-4 border-yellow-400 ":"border-l-4 border-r-4 border-green-500 "}`}
                         key={item.id}
 
                     >{item.title}
