@@ -11,7 +11,7 @@ interface IItemProps {
 }
 const Item = ({ items, setItems, filter, setFilter }: IItemProps) => {
 
-    const editVorItem = (id: string) => {
+    const toggleEditItem = (id: string) => {
         const index = items.findIndex((item) => item.id === id);
         const newItems = [...items]
         setFilter(newItems[index].title)
@@ -23,7 +23,7 @@ const Item = ({ items, setItems, filter, setFilter }: IItemProps) => {
         setItems(newItem)
     }
 
-    const editItem = (id: string) => {
+    const updateTodo = (id: string) => {
         const index = items.findIndex((item) => item.id === id);
         const newItems = [...items]
         newItems[index].title = filter;
@@ -35,14 +35,14 @@ const Item = ({ items, setItems, filter, setFilter }: IItemProps) => {
         <ul className='bg-slate-600 flex rounded-xl flex-col  justify-center items-center mt-8 px-2'>
             {
                 items.map((item) => (
-                    <li className='flex px-4  gap-48 bg-white my-2 py-2 border-b last:border-b-0 rounded-lg w-fit '
+                    <li className={`flex flex-wrap  px-1 w-full  bg-white my-2 py-2 rounded-lg justify-between items-center ${item.done ? "border-l-4 border-r-4 border-yellow-400 " : "border-l-4 border-r-4 border-green-500 "}`}
                         key={item.id}
 
                     >{item.title}
                         <span className='flex items-center gap-4'>
                             <FaTrashAlt className="text-xl text-red-400 cursor-pointer" onClick={() => { deleteItem(item.id) }} />
-                            <AiFillEdit className={`text-2xl text-orange-500 cursor-pointer ${item.done ? "hidden" : "flex"}`} onClick={() => { editVorItem(item.id) }} />
-                            < AiOutlineCheck className={`text-2xl text-green-500 cursor-pointer ${item.done ? "flex" : "hidden"}`} onClick={() => { editItem(item.id) }} />
+                            <AiFillEdit className={`text-2xl text-orange-500 cursor-pointer ${item.done ? "hidden" : "flex"}`} onClick={() => { toggleEditItem(item.id) }} />
+                            < AiOutlineCheck className={`text-2xl text-green-500 cursor-pointer ${item.done ? "flex" : "hidden"}`} onClick={() => { updateTodo(item.id) }} />
                         </span>
                     </li>
                 ))
